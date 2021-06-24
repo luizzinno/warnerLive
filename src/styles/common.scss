@@ -1,0 +1,450 @@
+  /**************************************************/
+ /********   FONT: OpenSans Regular   **************/
+/**************************************************/
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+
+  /**************************************************/
+ /***************      COLORS        ***************/
+/**************************************************/
+
+$white-fe: #fefefe;
+$black-10: #101010;
+$black-00: #000000;
+$grey-46: #464646;
+$red-netflix: #ac000e;
+  /**************************************************/
+ /***************    FONT WIDTH      ***************/
+/**************************************************/
+
+$w-normal: 400;
+$w-bold: 700;
+
+:root {
+    font-size: 10px;
+    color: $white-fe;
+    background: $black-10;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: $w-normal;
+    width: 100vw;
+}
+
+body {
+    margin: 2rem;
+}
+
+#header {
+    
+    display: flex;
+    position: sticky;
+    top: 0;
+    background: $black-10;
+    padding: 2rem 0;
+    z-index: 99999;
+
+    .header-title {
+        font-size: 2.2rem;
+        margin: 0;
+        margin-left: 3rem;
+        align-self: center;
+    }
+
+    .header-logo {
+        width: 14.3rem;
+        height: 12.7rem;
+    }
+
+    .header-buttons {
+        position: absolute;
+        display: flex;
+        align-self: center;
+        align-content: flex-end;
+        right: 2rem;
+
+        .header-button {
+            width: 7rem;
+            height: 4.4rem;
+            align-self: center;
+            text-align: center;
+            position: relative;
+            padding: 1.5rem 0;
+            box-sizing: border-box;
+            color: $white-fe;
+            text-decoration: none;
+            border-radius: .5rem;
+
+            &:hover {
+                background-color: $white-fe;
+                color: $black-10;
+            }
+        }
+
+        
+    }
+}
+
+#top {
+
+    counter-reset: top-item-counter;
+    display: flex;
+    flex-direction: column-reverse;
+
+    ol {
+        list-style: none;
+        display: flex;
+        flex-wrap: nowrap;
+        margin: 0;
+        padding: 0;
+      
+        .caratula-container {
+            position: relative;
+            counter-increment: top-item-counter;
+            display: flex;
+            flex-grow: 1;
+            font-size: 0.8rem;
+            margin-bottom: 0.5rem;
+        
+        /* estilado de los números de la lista ordenada */
+        &::before {
+
+            /* Añadir al texto un borde */
+            -webkit-text-fill-color: $black-00; /* Sobreescribe `color` (importa el orden) */
+            -webkit-text-stroke-width: 2px;
+            -webkit-text-stroke-color: $grey-46;
+            /* Fin del borde */
+
+            position: relative;
+            content: counter(top-item-counter);
+            font-weight: $w-bold;
+            font-size: 22.2vw;
+            line-height: .8;
+            margin-top: -1.6vw;
+            z-index: -1;
+        }
+
+        .caratula {
+            position: absolute;
+            right: 0;
+            width: auto;
+            height: 16vw;
+        }
+
+        .caratula-logo {
+            position: absolute;
+            right: 10vw;
+            top: .4vw;
+            background: violet;
+            img {
+                width: .94vw;
+                height: auto;
+            }
+        }
+        .cararatula-etiquetas {
+            position: absolute;
+            width: 9.45vw;
+            right: 1vw;
+            bottom: .5vw;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+
+            .etiqueta-nuevos-episodios {
+                text-transform: uppercase;
+                background-color: $red-netflix;
+                font-size: .8vw;
+                height: 1.2vw;
+                padding: .25vw 0;
+            }
+            .etiqueta-cada-semana {
+                text-transform: uppercase;
+                background-color: $white-fe;
+                color: $black-10;
+                font-size: .8vw;
+                font-style: normal;
+                font-weight: $w-bold;
+                height: 1.3vw;
+                padding: 0.1vw 0;
+            }
+        }
+    }
+  }
+  h2 {
+    font-weight: $w-normal;
+    span {
+        &::after {
+            content: counter(top-item-counter);
+            font-weight: $w-bold;
+        }
+    }
+  }
+}
+
+#comedias, #dramas {
+    
+    position: relative;
+
+    ul {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        display: flex;
+        flex-wrap: nowrap;
+        position: relative;
+        width: 100%;
+        height: 10vw;
+
+        li {
+            position: relative;
+            display: flex;
+            width: 16.66%;
+
+            .caratula-container {
+                width: 100%;
+
+                .caratula {
+                    position: absolute;
+                    width: inherit;
+                    transition: .1s;
+
+                    &:hover {
+                        z-index: 99;
+                        top: -1vw;
+                        left: -1.4vw;
+                        width: 21vw;
+                        opacity: 1;
+                    }
+
+                    &:hover + .caratula-logo {
+                        z-index: 99;
+                        left: -1vw;
+                        top: -.4vw;
+                    }
+                    &:hover + .caratula-logo img {
+                        width: 1vw;
+                    }
+                }
+                .caratula-logo {
+                    transition: .2s;
+                    position: absolute;
+                    left: .4vw;
+                    top: .4vw;
+                    background-color: greenyellow;
+                    img {
+                        width: .8vw;
+                        height: auto;
+                    }
+
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 1280px) {
+
+    #header {
+        .header-title {
+            display: none;
+        }
+    }
+
+    #top {
+        
+        ol{
+            .caratula-container {
+                position: relative;
+                height: inherit;
+                
+                &:nth-child(n+4) {
+                    display: none;
+                }
+
+                &::before {
+                    left: 0;
+                    font-size: 32.4vw;
+                    line-height: .8;
+                    margin-top: -2.1vw;
+                }
+                .caratula {
+                    position: absolute;
+                    right: 0;
+                    height: 23.5vw;
+                }
+
+                .caratula-logo {
+                    right: 14.3vw;
+                    top: .6vw;
+                    img {
+                        width: 1.8vw;
+                    }
+                }
+                .cararatula-etiquetas {
+                    width: 13.4vw;
+                    right: 1.5vw;
+                    bottom: .6vw;
+        
+                    .etiqueta-nuevos-episodios,
+                    .etiqueta-cada-semana {
+                        font-size: 1.3vw;
+                        height: 1.6vw;
+                        padding: .6vw 0;
+                    }
+                }
+            }
+        }
+    }
+
+    #comedias, #dramas {
+    
+        ul {
+            flex-wrap: wrap;
+            height: auto;
+    
+            li {
+                width: 25%;
+                
+                &:nth-child(n) {
+
+                    .caratula-logo {
+                        left: .7vw;
+                        top: .9vw;
+                        
+                        img {
+                            width: 1.2vw;
+                        }
+                    }
+                }
+            
+
+                &:nth-child(n+5) {
+                   width: 50%;
+                   .caratula-logo {
+                    top: 1.4vw;
+                    left: 1.4vw;
+                        img {
+                            width: 2.4vw;
+                        }
+                    }
+                }
+            }
+
+            li {
+                
+                .caratula-container {
+
+                    .caratula {
+                        display: flex;
+                        position: relative;
+                        pointer-events: none;
+                        width: inherit;
+                    }                
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    
+    #comedias, #dramas {
+    
+        ul {
+
+            li {
+                
+                &:nth-child(n) {
+
+                    width: 33.33%;
+
+                    .caratula-logo {
+                        left: .7vw;
+                        top: .9vw;
+                        
+                        img {
+                            width: 1.8vw;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 480px) {
+
+    #top {
+        
+        ol{
+            flex-direction: column;
+            .caratula-container {
+
+                padding: 4vw 0;
+
+                &:nth-child(n+4) {
+                    display: none;
+                }
+                &::before {
+                    font-size: 111vw;
+                    line-height: .8;
+                    margin-top: -7.6vw;
+                }
+                .caratula {
+                    position: absolute;
+                    right: 0;
+                    width: auto;
+                    height: 80vw;
+                
+                }
+                .caratula-logo {
+                    right: 50vw;
+                    top: 5.8vw;
+                    img {
+                        width: 5vw;
+                    }
+                }
+                .cararatula-etiquetas {
+                    width: 44vw;
+                    right: 6vw;
+                    bottom: 6.5vw;
+        
+                    .etiqueta-nuevos-episodios {
+                        font-size: 3vw;
+                        height: 3.6vw;
+                        padding: 2vw 0;
+                    }
+                    .etiqueta-cada-semana {
+                        font-size: 3.2vw;
+                        height: 3.6vw;
+                        padding: 2vw 0;
+                    }
+                }
+            }
+        }
+        
+        h2 {
+            font-size: 4rem;
+        }
+    }
+
+    #comedias, #dramas {
+    
+        ul {
+
+            li {
+                
+                &:nth-child(n) {
+
+                    width: 100%;
+
+                    .caratula-logo {
+                        left: 2vw;
+                        top: 2vw;
+                        
+                        img {
+                            width: 4.8vw;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
